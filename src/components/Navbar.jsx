@@ -1,32 +1,38 @@
 import { NavLink } from 'react-router-dom'
+import { Clock3, Home, LineChart } from 'lucide-react'
 
 const navItems = [
-  { to: '/', label: 'Home' },
-  { to: '/timeline', label: 'Timeline' },
-  { to: '/stats', label: 'Stats' },
+  { to: '/', label: 'Home', icon: Home },
+  { to: '/timeline', label: 'Timeline', icon: Clock3 },
+  { to: '/stats', label: 'Stats', icon: LineChart },
 ]
 
 export default function Navbar() {
   return (
-    <header className="sticky top-0 z-20 border-b border-slate-200 bg-white/95 backdrop-blur">
-      <nav className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-        <div className="text-lg font-bold tracking-tight text-slate-900">KeenKeeper</div>
+    <header className="border-b border-slate-200 bg-white">
+      <nav className="mx-auto flex w-full max-w-450 items-center justify-between px-8 py-5 sm:px-12 lg:px-20">
+        <div className="text-5xl font-bold tracking-tight [zoom:0.42] sm:[zoom:0.52]">
+          <span className="text-slate-900">Keen</span>
+          <span className="text-emerald-700">Keeper</span>
+        </div>
 
-        <ul className="flex items-center gap-1 sm:gap-2">
-          {navItems.map(({ to, label }) => {
+        <ul className="flex items-center gap-2 sm:gap-3">
+          {navItems.map(({ to, label, icon }) => {
+            const Icon = icon
             return (
               <li key={to}>
                 <NavLink
                   to={to}
                   end={to === '/'}
                   className={({ isActive }) =>
-                    `inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold transition sm:text-sm ${
+                    `inline-flex items-center gap-2 rounded-lg px-5 py-3 text-2xl font-semibold [zoom:0.5] transition ${
                       isActive
                         ? 'bg-emerald-800 text-white shadow-sm'
-                        : 'text-slate-600 hover:bg-emerald-50 hover:text-emerald-900'
+                        : 'text-slate-500 hover:bg-emerald-50 hover:text-emerald-900'
                     }`
                   }
                 >
+                  <Icon size={18} strokeWidth={2.3} />
                   {label}
                 </NavLink>
               </li>
