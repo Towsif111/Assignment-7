@@ -1,5 +1,5 @@
 
-import { Navigate, Route, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import Navbar from './components/Navbar.jsx'
 import Footer from './components/Footer.jsx'
 import AppErrorBoundary from './components/AppErrorBoundary.jsx'
@@ -7,6 +7,7 @@ import HomePage from './pages/Homepage.jsx'
 import FriendDetailsPage from './pages/FriendDetailsPage.jsx'
 import TimelinePage from './pages/TimelinePage.jsx'
 import StatsPage from './pages/StatsPage.jsx'
+import ErrorPage from './pages/ErrorPage.jsx'
 import { FriendsProvider } from './context/FriendsContext.jsx'
 import { TimelineProvider } from './context/TimelineContext.jsx'
 
@@ -24,7 +25,7 @@ function App() {
                   <Route path="/friends/:id" element={<FriendDetailsPage />} />
                   <Route path="/timeline" element={<TimelinePage />} />
                   <Route path="/stats" element={<StatsPage />} />
-                  <Route path="*" element={<Navigate to="/" replace />} />
+                  <Route path="*" element={<ErrorPage />} />
                 </Routes>
               </div>
             </div>
