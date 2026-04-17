@@ -1,5 +1,6 @@
 
 import Navbar from './components/Navbar.jsx'
+import Footer from './components/Footer.jsx'
 import HomePage from './pages/Homepage.jsx'
 import { FriendsProvider } from './context/FriendsContext.jsx'
 import { TimelineProvider } from './context/TimelineContext.jsx'
@@ -15,6 +16,7 @@ function App() {
               <HomePage />
             </div>
           </div>
+          <Footer />
         </main>
       </TimelineProvider>
     </FriendsProvider>

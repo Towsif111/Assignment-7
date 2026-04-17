@@ -1,10 +1,9 @@
 import { NavLink } from 'react-router-dom'
-import { Clock3, Home, LineChart } from 'lucide-react'
 
 const navItems = [
-  { to: '/', label: 'Home', icon: Home },
-  { to: '/timeline', label: 'Timeline', icon: Clock3 },
-  { to: '/stats', label: 'Stats', icon: LineChart },
+  { to: '/', label: 'Home' },
+  { to: '/timeline', label: 'Timeline' },
+  { to: '/stats', label: 'Stats' },
 ]
 
 export default function Navbar() {
@@ -17,8 +16,7 @@ export default function Navbar() {
         </div>
 
         <ul className="flex items-center gap-2 sm:gap-3">
-          {navItems.map(({ to, label, icon }) => {
-            const Icon = icon
+          {navItems.map(({ to, label }) => {
             return (
               <li key={to}>
                 <NavLink
@@ -32,7 +30,6 @@ export default function Navbar() {
                     }`
                   }
                 >
-                  <Icon size={18} strokeWidth={2.3} />
                   {label}
                 </NavLink>
               </li>
