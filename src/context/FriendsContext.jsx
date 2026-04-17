@@ -42,8 +42,13 @@ export function FriendsProvider({ children }) {
     }
   }, [])
 
+  function getFriendById(id) {
+    const numericId = Number(id)
+    return friends.find((friend) => friend.id === numericId)
+  }
+
   return (
-    <FriendsContext.Provider value={{ friends, loading, error }}>
+    <FriendsContext.Provider value={{ friends, loading, error, getFriendById }}>
       {children}
     </FriendsContext.Provider>
   )

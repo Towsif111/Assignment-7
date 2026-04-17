@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 export default function FriendCard({ friend }) {
   const statusClassMap = {
     overdue: 'bg-rose-500 text-white',
@@ -16,7 +18,10 @@ export default function FriendCard({ friend }) {
     .join(' ')
 
   return (
-    <article className="rounded-lg border border-slate-200 bg-white px-5 py-4 text-center shadow-sm">
+    <Link
+      to={`/friends/${friend.id}`}
+      className="block rounded-lg border border-slate-200 bg-white px-5 py-4 text-center shadow-sm transition hover:-translate-y-0.5 hover:shadow"
+    >
       <img
         src={friend.picture}
         alt={friend.name}
@@ -45,6 +50,6 @@ export default function FriendCard({ friend }) {
             : prettyStatus}
         </span>
       </div>
-    </article>
+    </Link>
   )
 }

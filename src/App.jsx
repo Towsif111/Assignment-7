@@ -1,7 +1,9 @@
 
+import { Navigate, Route, Routes } from 'react-router-dom'
 import Navbar from './components/Navbar.jsx'
 import Footer from './components/Footer.jsx'
 import HomePage from './pages/Homepage.jsx'
+import FriendDetailsPage from './pages/FriendDetailsPage.jsx'
 import { FriendsProvider } from './context/FriendsContext.jsx'
 import { TimelineProvider } from './context/TimelineContext.jsx'
 
@@ -13,7 +15,11 @@ function App() {
           <Navbar />
           <div className="mx-auto w-full max-w-6xl">
             <div className="px-4 py-8 sm:px-6 lg:px-8">
-              <HomePage />
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/friends/:id" element={<FriendDetailsPage />} />
+                <Route path="*" element={<Navigate to="/" replace />} />
+              </Routes>
             </div>
           </div>
           <Footer />

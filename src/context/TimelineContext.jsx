@@ -1,4 +1,4 @@
-import { createContext, useContext } from 'react'
+import { createContext, useContext, useState } from 'react'
 
 const TimelineContext = createContext({ entries: [] })
 
@@ -12,7 +12,21 @@ const mockEntries = Array.from({ length: 12 }, (_, index) => ({
 }))
 
 export function TimelineProvider({ children }) {
-  return <TimelineContext.Provider value={{ entries: mockEntries }}>{children}</TimelineContext.Provider>
+  const [entries, setEntries] = useState(mockEntries)
+
+  function addInteraction(type, friendName) {
+    const today = new Date().toISOString().slice(0, 10)
+    const newEntry = {
+      id: Date.now(),
+      date: today,
+      type,
+      friendName,
+    }
+
+    setEntries((prevEntries) => [newEntry, ...prevEntries])
+  }
+
+  return <TimelineContext.Provider value={{ entries, addInteraction }}>{children}</TimelineContext.Provider>
 }
 
 export function useTimeline() {

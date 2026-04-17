@@ -1,4 +1,3 @@
-import { UserPlus } from 'lucide-react'
 import FriendCard from '../components/FriendCard'
 import Loader from '../components/Loader'
 import SummaryCards from '../components/SummaryCards'
@@ -61,7 +60,6 @@ export default function HomePage() {
 					type="button"
 					className="mt-7 inline-flex items-center gap-2 rounded bg-emerald-800 px-6 py-3 text-base font-semibold text-white shadow-md shadow-emerald-900/20 transition hover:bg-emerald-700"
 				>
-					<UserPlus size={18} />
 					Add a Friend
 				</button>
 			</div>
