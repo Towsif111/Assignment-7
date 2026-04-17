@@ -24,19 +24,15 @@ export default function TimelinePage() {
 	}, [entries, filter])
 
 	return (
-		<section className="mx-auto w-full max-w-5xl">
-			<div className="flex items-end justify-between gap-6">
-				<div>
-					<h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">Timeline</h1>
-					<p className="mt-2 text-base text-slate-500">Recent check-ins across your close circle.</p>
-				</div>
+		<section className="mx-auto w-full max-w-3xl">
+			<div>
+				<h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">Timeline</h1>
 
-				<label className="text-sm font-semibold text-slate-700">
-					Filter Timeline
+				<label className="mt-8 block w-full max-w-95 text-sm font-semibold text-slate-700">
 					<select
 						value={filter}
 						onChange={(event) => setFilter(event.target.value)}
-						className="mt-2 block w-56 rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-700 shadow-sm outline-none"
+						className="mt-2 block w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-base text-slate-700 shadow-sm outline-none"
 					>
 						{filterOptions.map((option) => (
 							<option key={option.value} value={option.value}>
@@ -47,7 +43,7 @@ export default function TimelinePage() {
 				</label>
 			</div>
 
-			<div className="mt-6 space-y-3">
+			<div className="mt-8 space-y-3">
 				{visibleEntries.length === 0 ? (
 					<article className="rounded-xl border border-slate-200 bg-white px-5 py-6 text-center text-sm text-slate-500 shadow-sm">
 						No entries found for this filter yet.
