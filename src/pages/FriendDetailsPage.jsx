@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import fallbackAvatar from '../assets/logo.png'
 import Loader from '../components/Loader'
@@ -14,9 +15,19 @@ function formatDueDate(dateString) {
 }
 
 export default function FriendDetailsPage() {
+	const [toasts, setToasts] = useState([])
+	const toastTimers = useRef([])
+	const toastIdCounter = useRef(0)
 	const { id } = useParams()
 	const { getFriendById, loading } = useFriends()
 	const { addInteraction } = useTimeline()
+
+	useEffect(() => {
+		return () => {
+			toastTimers.current.forEach((timerId) => window.clearTimeout(timerId))
+			toastTimers.current = []
+		}
+	}, [])
 
 	if (loading) {
 		return <Loader />
@@ -34,12 +45,37 @@ export default function FriendDetailsPage() {
 
 	function handleCheckIn(type) {
 		addInteraction(type, friend.name)
-		window.alert(`${type[0].toUpperCase() + type.slice(1)} logged for ${friend.name}`)
+
+		const label = `${type[0].toUpperCase() + type.slice(1)} logged for ${friend.name}`
+		const id = `${type}-${toastIdCounter.current += 1}`
+
+		setToasts((currentToasts) => [...currentToasts, { id, label }])
+
+		const timerId = window.setTimeout(() => {
+			setToasts((currentToasts) => currentToasts.filter((toast) => toast.id !== id))
+		}, 2500)
+
+		toastTimers.current.push(timerId)
 	}
 
 	return (
-		<section className="grid gap-4 lg:grid-cols-[0.95fr_2fr]">
-			<div className="space-y-4">
+		<>
+			<div className="pointer-events-none fixed right-4 top-4 z-50 flex w-full max-w-sm flex-col gap-3 sm:right-6 sm:top-6">
+				{toasts.map((toast) => (
+					<div
+						key={toast.id}
+						className="flex items-center gap-3 rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-emerald-950 shadow-lg shadow-emerald-100"
+					>
+						<span className="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-500 text-white">
+							<i className="fa-solid fa-check text-sm" aria-hidden="true"></i>
+						</span>
+						<p className="text-sm font-semibold">{toast.label}</p>
+					</div>
+				))}
+			</div>
+
+			<section className="grid gap-4 lg:grid-cols-[0.95fr_2fr]">
+				<div className="space-y-4">
 				<article className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
 					<div className="flex flex-col items-center text-center">
 						<img
@@ -158,6 +194,7 @@ export default function FriendDetailsPage() {
 					</div>
 				</section>
 			</div>
-		</section>
+			</section>
+		</>
 	)
 }
