@@ -1,18 +1,33 @@
-import { createContext, useContext, useState } from 'react'
+import { createContext, useEffect, useContext, useState } from 'react'
 
 const TimelineContext = createContext({ entries: [] })
+const storageKey = 'keenkeeper.timelineEntries'
 
-const now = new Date()
-const y = now.getFullYear()
-const m = String(now.getMonth() + 1).padStart(2, '0')
+function loadStoredEntries() {
+  try {
+    const savedEntries = window.localStorage.getItem(storageKey)
 
-const mockEntries = Array.from({ length: 12 }, (_, index) => ({
-  id: index + 1,
-  date: `${y}-${m}-${String((index % 28) + 1).padStart(2, '0')}`,
-}))
+    if (!savedEntries) {
+      return []
+    }
+
+    const parsedEntries = JSON.parse(savedEntries)
+    return Array.isArray(parsedEntries) ? parsedEntries : []
+  } catch {
+    return []
+  }
+}
 
 export function TimelineProvider({ children }) {
-  const [entries, setEntries] = useState(mockEntries)
+  const [entries, setEntries] = useState(loadStoredEntries)
+
+  useEffect(() => {
+    try {
+      window.localStorage.setItem(storageKey, JSON.stringify(entries))
+    } catch {
+      // Ignore storage write failures.
+    }
+  }, [entries])
 
   function addInteraction(type, friendName) {
     const today = new Date().toISOString().slice(0, 10)
