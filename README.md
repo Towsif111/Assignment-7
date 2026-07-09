@@ -31,15 +31,15 @@ KeenKeeper is a responsive friendship-tracking web app that helps you stay conne
 - daisyui
 
 ## Screenshot
-![Home Page](assets/Screenshot%202026-07-09%20193430.png)
+![Home Page](src/assets/Screenshot%202026-07-09%20193430.png)
 
-![Friend Details Page](assets/Screenshot%202026-07-09%20193458.png)
+![Friend Details Page](src/assets/Screenshot%202026-07-09%20193458.png)
 
-![Homepage Section](assets/Screenshot%202026-07-09%20193505.png)
+![Homepage Section](src/assets/Screenshot%202026-07-09%20193505.png)
 
-![Timeline Page](assets/Screenshot%202026-07-09%20193514.png)
+![Timeline Page](src/assets/Screenshot%202026-07-09%20193514.png)
 
-![Stats Page](assets/Screenshot%202026-07-09%20193526.png)
+![Stats Page](src/assets/Screenshot%202026-07-09%20193526.png)
 
 ## How to Run Locally
 1. Clone the repo
