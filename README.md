@@ -1,27 +1,77 @@
-# Name of the Project: 
-
-KeenKeeper.
-
 # KeenKeeper
 
-KeenKeeper is a responsive friendship-tracking web app that helps you stay connected with the people who matter most. You can browse your friends, open detailed profiles, log quick check-ins (Call, Text, Video), and review relationship activity through timeline and analytics views.
+## Overview
+KeenKeeper is a responsive friendship-tracking web app that helps you stay connected with the people who matter most. Browse your friends, open detailed profiles, log quick check-ins, and review relationship activity through timeline and analytics views.
+
+## Live Demo
+[View Project](https://assignment-7-beta-hazel.vercel.app)
 
 ## Technologies Used
-
 - React 19
 - Vite
 - React Router DOM
-- Tailwind CSS (via `@tailwindcss/vite`)
+- Tailwind CSS
 - Recharts
-- React Hot Toast
-- Lucide React
+- ESLint
 
-## Key Features
+## Features
+- Home page with hero content, summary cards, loading state, and a friend grid loaded from JSON data.
+- Friend details page with status badges, tags, relationship info, and quick check-in actions for Call, Text, and Video.
+- Timeline page with interaction history and filtering by interaction type.
+- Friendship analytics page with a pie chart visualizing interaction counts.
+- Responsive layout with navigation and footer shared across the app.
 
-- Home page with hero banner, summary cards, loading animation, and friend grid loaded from JSON data.
-- Friend Details page with two-column layout, status/tags/info, and Quick Check-In buttons that create timeline entries.
-- Timeline page with interaction history and filter by Call, Text, or Video.
-- Friendship Analytics page with a Recharts pie chart visualizing interaction counts.
+## Dependencies
+- react
+- react-dom
+- react-router-dom
+- recharts
+- tailwindcss
+- @tailwindcss/vite
+- daisyui
+
+## Screenshot
+![Home Page](assets/Screenshot%202026-07-09%20193430.png)
+
+![Friend Details Page](assets/Screenshot%202026-07-09%20193458.png)
+
+![Homepage Section](assets/Screenshot%202026-07-09%20193505.png)
+
+![Timeline Page](assets/Screenshot%202026-07-09%20193514.png)
+
+![Stats Page](assets/Screenshot%202026-07-09%20193526.png)
+
+## How to Run Locally
+1. Clone the repo
+
+	```bash
+	git clone https://github.com/Towsif111/Assignment-7.git
+	cd Assignment-7
+	```
+
+2. Install dependencies
+
+	```bash
+	npm install
+	```
+
+3. Start the development server
+
+	```bash
+	npm run dev
+	```
+
+4. Open the app in your browser
+
+	```text
+	http://localhost:5173
+	```
+
+## Build And Preview
+```bash
+npm run build
+npm run preview
+```
 
 
 
